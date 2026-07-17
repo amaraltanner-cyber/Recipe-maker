@@ -1,0 +1,488 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "servingBasis": "All nutrition values are per 1 serving unless noted otherwise.",
+    "nutritionDisclaimer": "Nutrition values are estimates calculated from standard ingredient reference data (not lab-tested). Treat protein/calorie numbers as close approximations, not exact figures.",
+    "groceryCategories": ["produce", "meat-seafood", "dairy-eggs", "pantry-dry-goods", "condiments-sauces-spices"]
+  },
+  "recipes": [
+    {
+      "id": "air-fryer-egg-white-turkey-bacon-cups",
+      "name": "Air Fryer Egg White & Turkey Bacon Cups",
+      "mealType": ["breakfast"],
+      "device": ["air-fryer"],
+      "cookTimeMinutes": 12,
+      "servings": 1,
+      "nutrition": { "proteinG": 27, "calories": 205, "estimated": true },
+      "ingredients": [
+        { "item": "egg whites", "quantity": 4, "unit": "each", "category": "dairy-eggs" },
+        { "item": "egg", "quantity": 1, "unit": "each", "category": "dairy-eggs" },
+        { "item": "turkey bacon", "quantity": 2, "unit": "slices", "category": "meat-seafood" },
+        { "item": "spinach, chopped", "quantity": 0.25, "unit": "cup", "category": "produce" },
+        { "item": "salt and pepper", "quantity": 1, "unit": "pinch", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Whisk egg whites and whole egg together with salt and pepper.",
+        "Stir in chopped spinach and diced turkey bacon.",
+        "Pour into a greased silicone muffin cup or ramekin that fits your air fryer basket.",
+        "Air fry at 330°F for 10-12 minutes until set."
+      ]
+    },
+    {
+      "id": "greek-yogurt-protein-bowl",
+      "name": "Greek Yogurt Protein Bowl",
+      "mealType": ["breakfast", "snack"],
+      "device": ["no-cook"],
+      "cookTimeMinutes": 5,
+      "servings": 1,
+      "nutrition": { "proteinG": 20, "calories": 220, "estimated": true },
+      "ingredients": [
+        { "item": "plain nonfat Greek yogurt", "quantity": 170, "unit": "g", "category": "dairy-eggs" },
+        { "item": "mixed berries", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "chia seeds", "quantity": 1, "unit": "tbsp", "category": "pantry-dry-goods" },
+        { "item": "honey", "quantity": 1, "unit": "tsp", "category": "pantry-dry-goods" }
+      ],
+      "instructions": [
+        "Spoon yogurt into a bowl.",
+        "Top with berries and chia seeds.",
+        "Drizzle with honey."
+      ]
+    },
+    {
+      "id": "cottage-cheese-veggie-scramble",
+      "name": "Cottage Cheese Veggie Scramble",
+      "mealType": ["breakfast"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 10,
+      "servings": 1,
+      "nutrition": { "proteinG": 25, "calories": 255, "estimated": true },
+      "ingredients": [
+        { "item": "eggs", "quantity": 2, "unit": "each", "category": "dairy-eggs" },
+        { "item": "low-fat cottage cheese", "quantity": 0.5, "unit": "cup", "category": "dairy-eggs" },
+        { "item": "spinach", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "tomato, diced", "quantity": 0.25, "unit": "cup", "category": "produce" },
+        { "item": "cooking spray", "quantity": 1, "unit": "spray", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Heat a nonstick pan over medium heat with cooking spray.",
+        "Add spinach and tomato, cook 1-2 minutes until softened.",
+        "Whisk eggs and cottage cheese together, pour into pan.",
+        "Scramble gently until just set, about 4-5 minutes."
+      ]
+    },
+    {
+      "id": "protein-oats-with-peanut-butter",
+      "name": "Protein Oats with Peanut Butter",
+      "mealType": ["breakfast"],
+      "device": ["stovetop", "microwave"],
+      "cookTimeMinutes": 8,
+      "servings": 1,
+      "nutrition": { "proteinG": 35, "calories": 450, "estimated": true },
+      "ingredients": [
+        { "item": "rolled oats", "quantity": 0.5, "unit": "cup", "category": "pantry-dry-goods" },
+        { "item": "whey protein powder", "quantity": 1, "unit": "scoop", "category": "pantry-dry-goods" },
+        { "item": "peanut butter", "quantity": 1, "unit": "tbsp", "category": "pantry-dry-goods" },
+        { "item": "unsweetened almond milk", "quantity": 1, "unit": "cup", "category": "dairy-eggs" },
+        { "item": "banana", "quantity": 0.5, "unit": "each", "category": "produce" }
+      ],
+      "instructions": [
+        "Cook oats with almond milk on stovetop (or microwave 2-3 min) until creamy.",
+        "Remove from heat, stir in protein powder until smooth.",
+        "Top with peanut butter and sliced banana."
+      ]
+    },
+    {
+      "id": "turkey-sausage-egg-muffins",
+      "name": "Turkey Sausage & Egg Muffins",
+      "mealType": ["breakfast"],
+      "device": ["oven"],
+      "cookTimeMinutes": 20,
+      "servings": 1,
+      "nutrition": { "proteinG": 29, "calories": 320, "estimated": true },
+      "ingredients": [
+        { "item": "eggs", "quantity": 3, "unit": "each", "category": "dairy-eggs" },
+        { "item": "turkey breakfast sausage, crumbled", "quantity": 1, "unit": "link", "category": "meat-seafood" },
+        { "item": "bell pepper, diced", "quantity": 2, "unit": "tbsp", "category": "produce" },
+        { "item": "shredded cheddar cheese", "quantity": 1, "unit": "tbsp", "category": "dairy-eggs" }
+      ],
+      "instructions": [
+        "Preheat oven to 350°F and grease a muffin tin.",
+        "Whisk eggs, then stir in sausage, bell pepper, and cheese.",
+        "Pour into 3 muffin cups and bake 18-20 minutes until set."
+      ]
+    },
+    {
+      "id": "air-fryer-chicken-fajita-bowl",
+      "name": "Air Fryer Chicken Fajita Bowl",
+      "mealType": ["lunch", "dinner"],
+      "device": ["air-fryer"],
+      "cookTimeMinutes": 18,
+      "servings": 1,
+      "nutrition": { "proteinG": 46, "calories": 310, "estimated": true },
+      "ingredients": [
+        { "item": "chicken breast", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "bell pepper and onion mix, sliced", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "cooked brown rice", "quantity": 0.33, "unit": "cup", "category": "pantry-dry-goods" },
+        { "item": "salsa", "quantity": 2, "unit": "tbsp", "category": "condiments-sauces-spices" },
+        { "item": "lime", "quantity": 0.5, "unit": "each", "category": "produce" },
+        { "item": "fajita seasoning", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Toss sliced chicken breast and pepper/onion mix with fajita seasoning.",
+        "Air fry at 380°F for 15-18 minutes, shaking basket halfway, until chicken hits 165°F internal.",
+        "Serve over brown rice with salsa and a squeeze of lime."
+      ]
+    },
+    {
+      "id": "tuna-salad-lettuce-wraps",
+      "name": "Tuna Salad Lettuce Wraps",
+      "mealType": ["lunch", "snack"],
+      "device": ["no-cook"],
+      "cookTimeMinutes": 10,
+      "servings": 1,
+      "nutrition": { "proteinG": 35, "calories": 155, "estimated": true },
+      "ingredients": [
+        { "item": "canned tuna in water, drained", "quantity": 5, "unit": "oz can", "category": "pantry-dry-goods" },
+        { "item": "plain nonfat Greek yogurt", "quantity": 2, "unit": "tbsp", "category": "dairy-eggs" },
+        { "item": "celery, diced", "quantity": 2, "unit": "tbsp", "category": "produce" },
+        { "item": "red onion, diced", "quantity": 1, "unit": "tbsp", "category": "produce" },
+        { "item": "lettuce leaves", "quantity": 4, "unit": "each", "category": "produce" }
+      ],
+      "instructions": [
+        "Mix drained tuna with Greek yogurt, celery, and onion.",
+        "Spoon into lettuce leaves and wrap to eat."
+      ]
+    },
+    {
+      "id": "turkey-black-bean-bowl",
+      "name": "Turkey & Black Bean Bowl",
+      "mealType": ["lunch", "dinner"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 20,
+      "servings": 1,
+      "nutrition": { "proteinG": 39, "calories": 350, "estimated": true },
+      "ingredients": [
+        { "item": "ground turkey, 93% lean", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "black beans, cooked", "quantity": 0.5, "unit": "cup", "category": "pantry-dry-goods" },
+        { "item": "salsa", "quantity": 2, "unit": "tbsp", "category": "condiments-sauces-spices" },
+        { "item": "cooked brown rice", "quantity": 0.33, "unit": "cup", "category": "pantry-dry-goods" },
+        { "item": "taco seasoning", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Brown ground turkey in a skillet over medium-high heat with taco seasoning, about 8 minutes.",
+        "Stir in black beans and salsa, simmer 5 minutes.",
+        "Serve over brown rice."
+      ]
+    },
+    {
+      "id": "shrimp-zucchini-noodle-stir-fry",
+      "name": "Shrimp & Zucchini Noodle Stir Fry",
+      "mealType": ["lunch", "dinner"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 15,
+      "servings": 1,
+      "nutrition": { "proteinG": 45, "calories": 260, "estimated": true },
+      "ingredients": [
+        { "item": "shrimp, peeled and deveined", "quantity": 6, "unit": "oz", "category": "meat-seafood" },
+        { "item": "zucchini, spiralized", "quantity": 1, "unit": "medium", "category": "produce" },
+        { "item": "garlic, minced", "quantity": 2, "unit": "cloves", "category": "produce" },
+        { "item": "low-sodium soy sauce", "quantity": 1, "unit": "tbsp", "category": "condiments-sauces-spices" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Heat olive oil in a skillet over medium-high heat, sauté garlic 30 seconds.",
+        "Add shrimp, cook 2-3 minutes per side until pink.",
+        "Add zucchini noodles and soy sauce, toss 2-3 minutes until just tender."
+      ]
+    },
+    {
+      "id": "air-fryer-salmon-with-asparagus",
+      "name": "Air Fryer Salmon with Asparagus",
+      "mealType": ["lunch", "dinner"],
+      "device": ["air-fryer"],
+      "cookTimeMinutes": 15,
+      "servings": 1,
+      "nutrition": { "proteinG": 38, "calories": 360, "estimated": true },
+      "ingredients": [
+        { "item": "salmon fillet", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "asparagus", "quantity": 1, "unit": "cup", "category": "produce" },
+        { "item": "lemon", "quantity": 0.5, "unit": "each", "category": "produce" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" },
+        { "item": "salt and pepper", "quantity": 1, "unit": "pinch", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Toss asparagus with olive oil, salt, and pepper.",
+        "Place salmon and asparagus in air fryer basket, squeeze lemon over top.",
+        "Air fry at 400°F for 10-12 minutes until salmon flakes easily."
+      ]
+    },
+    {
+      "id": "chicken-cottage-cheese-power-bowl",
+      "name": "Chicken & Cottage Cheese Power Bowl",
+      "mealType": ["lunch"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 12,
+      "servings": 1,
+      "nutrition": { "proteinG": 47, "calories": 300, "estimated": true },
+      "ingredients": [
+        { "item": "chicken breast", "quantity": 4, "unit": "oz", "category": "meat-seafood" },
+        { "item": "low-fat cottage cheese", "quantity": 0.5, "unit": "cup", "category": "dairy-eggs" },
+        { "item": "cherry tomatoes, halved", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "cucumber, diced", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Pan-sear chicken breast in olive oil over medium heat, about 6 minutes per side until 165°F internal.",
+        "Slice chicken and arrange in a bowl with cottage cheese, tomatoes, and cucumber."
+      ]
+    },
+    {
+      "id": "air-fryer-chicken-thighs-with-broccoli",
+      "name": "Air Fryer Chicken Thighs with Broccoli",
+      "mealType": ["dinner"],
+      "device": ["air-fryer"],
+      "cookTimeMinutes": 22,
+      "servings": 1,
+      "nutrition": { "proteinG": 40, "calories": 350, "estimated": true },
+      "ingredients": [
+        { "item": "chicken thighs, boneless skinless", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "broccoli florets", "quantity": 1.5, "unit": "cup", "category": "produce" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" },
+        { "item": "garlic powder", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Toss chicken thighs and broccoli with olive oil and garlic powder.",
+        "Air fry at 380°F for 18-20 minutes, shaking basket halfway, until chicken hits 165°F internal."
+      ]
+    },
+    {
+      "id": "baked-cod-with-roasted-vegetables",
+      "name": "Baked Cod with Roasted Vegetables",
+      "mealType": ["dinner"],
+      "device": ["oven"],
+      "cookTimeMinutes": 25,
+      "servings": 1,
+      "nutrition": { "proteinG": 41, "calories": 255, "estimated": true },
+      "ingredients": [
+        { "item": "cod fillet", "quantity": 6, "unit": "oz", "category": "meat-seafood" },
+        { "item": "zucchini, sliced", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "bell pepper, sliced", "quantity": 0.5, "unit": "cup", "category": "produce" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" },
+        { "item": "lemon", "quantity": 0.5, "unit": "each", "category": "produce" }
+      ],
+      "instructions": [
+        "Preheat oven to 400°F.",
+        "Arrange cod and vegetables on a sheet pan, drizzle with olive oil.",
+        "Bake 20-22 minutes until cod flakes easily. Squeeze lemon over before serving."
+      ]
+    },
+    {
+      "id": "lean-beef-broccoli-stir-fry",
+      "name": "Lean Beef & Broccoli Stir Fry",
+      "mealType": ["dinner"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 18,
+      "servings": 1,
+      "nutrition": { "proteinG": 35, "calories": 290, "estimated": true },
+      "ingredients": [
+        { "item": "lean beef strips (93% lean)", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "broccoli florets", "quantity": 1.5, "unit": "cup", "category": "produce" },
+        { "item": "garlic, minced", "quantity": 1, "unit": "clove", "category": "produce" },
+        { "item": "ginger, minced", "quantity": 1, "unit": "tsp", "category": "produce" },
+        { "item": "low-sodium soy sauce", "quantity": 1, "unit": "tbsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Sear beef strips in a hot skillet 2-3 minutes until browned.",
+        "Add garlic, ginger, and broccoli, stir-fry 5-6 minutes.",
+        "Add soy sauce and toss another minute."
+      ]
+    },
+    {
+      "id": "turkey-chili",
+      "name": "Turkey Chili",
+      "mealType": ["dinner"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 30,
+      "servings": 1,
+      "nutrition": { "proteinG": 33, "calories": 290, "estimated": true },
+      "notes": "Recipe makes 4 servings — cook once, refrigerate the rest for meal prep.",
+      "ingredients": [
+        { "item": "ground turkey, 93% lean", "quantity": 4, "unit": "oz (per serving)", "category": "meat-seafood" },
+        { "item": "kidney beans, cooked", "quantity": 0.5, "unit": "cup (per serving)", "category": "pantry-dry-goods" },
+        { "item": "diced tomatoes", "quantity": 0.5, "unit": "cup (per serving)", "category": "pantry-dry-goods" },
+        { "item": "chili powder", "quantity": 1, "unit": "tsp (per serving)", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Brown ground turkey in a pot over medium heat.",
+        "Add beans, diced tomatoes, and chili powder, simmer 20-25 minutes.",
+        "Portion into 4 servings for the week."
+      ]
+    },
+    {
+      "id": "air-fryer-shrimp-skewers-with-peppers",
+      "name": "Air Fryer Shrimp Skewers with Peppers",
+      "mealType": ["dinner"],
+      "device": ["air-fryer"],
+      "cookTimeMinutes": 12,
+      "servings": 1,
+      "nutrition": { "proteinG": 43, "calories": 255, "estimated": true },
+      "ingredients": [
+        { "item": "shrimp, peeled and deveined", "quantity": 6, "unit": "oz", "category": "meat-seafood" },
+        { "item": "bell pepper and onion mix, chunked", "quantity": 1, "unit": "cup", "category": "produce" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" },
+        { "item": "paprika", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Thread shrimp and vegetables onto skewers (or leave loose in basket).",
+        "Toss with olive oil and paprika.",
+        "Air fry at 380°F for 8-10 minutes, shaking halfway."
+      ]
+    },
+    {
+      "id": "baked-chicken-breast-with-sweet-potato",
+      "name": "Baked Chicken Breast with Sweet Potato",
+      "mealType": ["dinner"],
+      "device": ["oven"],
+      "cookTimeMinutes": 30,
+      "servings": 1,
+      "nutrition": { "proteinG": 47, "calories": 400, "estimated": true },
+      "ingredients": [
+        { "item": "chicken breast", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "sweet potato", "quantity": 1, "unit": "small", "category": "produce" },
+        { "item": "green beans", "quantity": 1, "unit": "cup", "category": "produce" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Preheat oven to 400°F.",
+        "Cube sweet potato and toss with olive oil, spread on sheet pan with chicken and green beans.",
+        "Bake 25-30 minutes until chicken hits 165°F internal and potato is fork-tender."
+      ]
+    },
+    {
+      "id": "salmon-teriyaki-with-snap-peas",
+      "name": "Salmon Teriyaki with Snap Peas",
+      "mealType": ["dinner"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 15,
+      "servings": 1,
+      "nutrition": { "proteinG": 39, "calories": 355, "estimated": true },
+      "ingredients": [
+        { "item": "salmon fillet", "quantity": 5, "unit": "oz", "category": "meat-seafood" },
+        { "item": "snap peas", "quantity": 1, "unit": "cup", "category": "produce" },
+        { "item": "light teriyaki sauce", "quantity": 1, "unit": "tbsp", "category": "condiments-sauces-spices" },
+        { "item": "sesame oil", "quantity": 0.5, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Sear salmon in a hot skillet with sesame oil, 4 minutes per side.",
+        "Add teriyaki sauce, spoon over salmon in final minute.",
+        "Sauté snap peas in the same pan 2-3 minutes, serve alongside."
+      ]
+    },
+    {
+      "id": "hard-boiled-eggs-cucumber",
+      "name": "Hard-Boiled Eggs & Cucumber",
+      "mealType": ["snack"],
+      "device": ["stovetop"],
+      "cookTimeMinutes": 12,
+      "servings": 1,
+      "nutrition": { "proteinG": 12, "calories": 150, "estimated": true },
+      "notes": "Boil a batch of eggs ahead of time and keep refrigerated for grab-and-go snacks.",
+      "ingredients": [
+        { "item": "eggs", "quantity": 2, "unit": "each", "category": "dairy-eggs" },
+        { "item": "cucumber, sliced", "quantity": 0.5, "unit": "each", "category": "produce" },
+        { "item": "salt", "quantity": 1, "unit": "pinch", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Place eggs in a pot, cover with water, bring to a boil, then cover and remove from heat for 10-12 minutes.",
+        "Cool, peel, and serve with sliced cucumber and a pinch of salt."
+      ]
+    },
+    {
+      "id": "cottage-cheese-pineapple",
+      "name": "Cottage Cheese & Pineapple",
+      "mealType": ["snack"],
+      "device": ["no-cook"],
+      "cookTimeMinutes": 3,
+      "servings": 1,
+      "nutrition": { "proteinG": 17, "calories": 175, "estimated": true },
+      "ingredients": [
+        { "item": "low-fat cottage cheese", "quantity": 0.75, "unit": "cup", "category": "dairy-eggs" },
+        { "item": "pineapple chunks", "quantity": 0.5, "unit": "cup", "category": "produce" }
+      ],
+      "instructions": [
+        "Spoon cottage cheese into a bowl and top with pineapple chunks."
+      ]
+    },
+    {
+      "id": "turkey-roll-ups",
+      "name": "Turkey Roll-Ups",
+      "mealType": ["snack"],
+      "device": ["no-cook"],
+      "cookTimeMinutes": 5,
+      "servings": 1,
+      "nutrition": { "proteinG": 31, "calories": 235, "estimated": true },
+      "ingredients": [
+        { "item": "deli turkey slices", "quantity": 4, "unit": "oz", "category": "meat-seafood" },
+        { "item": "cheddar cheese slice", "quantity": 1, "unit": "each", "category": "dairy-eggs" },
+        { "item": "mustard", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Lay out turkey slices, top each with a strip of cheese and a dab of mustard.",
+        "Roll up tightly and eat."
+      ]
+    },
+    {
+      "id": "air-fryer-chickpeas",
+      "name": "Air Fryer Chickpeas",
+      "mealType": ["snack"],
+      "device": ["air-fryer"],
+      "cookTimeMinutes": 20,
+      "servings": 1,
+      "nutrition": { "proteinG": 15, "calories": 310, "estimated": true },
+      "ingredients": [
+        { "item": "chickpeas, cooked and dried", "quantity": 1, "unit": "cup", "category": "pantry-dry-goods" },
+        { "item": "olive oil", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" },
+        { "item": "smoked paprika", "quantity": 1, "unit": "tsp", "category": "condiments-sauces-spices" },
+        { "item": "salt", "quantity": 1, "unit": "pinch", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Pat chickpeas very dry, toss with olive oil, paprika, and salt.",
+        "Air fry at 390°F for 15-18 minutes, shaking basket every 5 minutes, until crispy."
+      ]
+    },
+    {
+      "id": "greek-yogurt-with-almonds",
+      "name": "Greek Yogurt with Almonds",
+      "mealType": ["snack"],
+      "device": ["no-cook"],
+      "cookTimeMinutes": 3,
+      "servings": 1,
+      "nutrition": { "proteinG": 20, "calories": 180, "estimated": true },
+      "ingredients": [
+        { "item": "plain nonfat Greek yogurt", "quantity": 0.75, "unit": "cup", "category": "dairy-eggs" },
+        { "item": "sliced almonds", "quantity": 1, "unit": "tbsp", "category": "pantry-dry-goods" },
+        { "item": "cinnamon", "quantity": 1, "unit": "pinch", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Spoon yogurt into a bowl, top with almonds and a dash of cinnamon."
+      ]
+    },
+    {
+      "id": "edamame-snack-bowl",
+      "name": "Edamame Snack Bowl",
+      "mealType": ["snack"],
+      "device": ["stovetop", "microwave"],
+      "cookTimeMinutes": 8,
+      "servings": 1,
+      "nutrition": { "proteinG": 17, "calories": 190, "estimated": true },
+      "ingredients": [
+        { "item": "shelled edamame, frozen", "quantity": 1, "unit": "cup", "category": "pantry-dry-goods" },
+        { "item": "sea salt", "quantity": 1, "unit": "pinch", "category": "condiments-sauces-spices" }
+      ],
+      "instructions": [
+        "Steam or microwave edamame according to package directions, about 5-8 minutes.",
+        "Toss with sea salt."
+      ]
+    }
+  ]
+}

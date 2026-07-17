@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protein Recipe Finder</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <h1>Protein Recipe Finder</h1>
+    <div class="settings-row">
+      <label>Daily protein target (g)
+        <input id="targetProtein" type="number" min="0" step="1">
+      </label>
+      <label>Already consumed today (g)
+        <input id="consumedProtein" type="number" min="0" step="1">
+      </label>
+      <div class="goal-readout" id="goalReadout"></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main class="browse">
+      <div class="controls">
+        <input id="searchInput" type="search" placeholder="Search recipes or ingredients…" autocomplete="off">
+
+        <div class="chip-group">
+          <span class="chip-group-label">Meal</span>
+          <div class="chip-row" id="mealTypeChips"></div>
+        </div>
+
+        <div class="chip-group">
+          <span class="chip-group-label">Device</span>
+          <div class="chip-row" id="deviceChips"></div>
+        </div>
+
+        <div class="sort-row">
+          <label for="sortSelect">Sort by</label>
+          <select id="sortSelect">
+            <option value="protein-desc">Protein (high → low)</option>
+            <option value="calories-asc">Calories (low → high)</option>
+            <option value="time-asc">Cook time (low → high)</option>
+            <option value="name-asc">Name (A → Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="resultCount" class="result-count"></div>
+      <div id="recipeGrid" class="recipe-grid"></div>
+    </main>
+
+    <aside class="plan-panel">
+      <div class="plan-panel-header">
+        <h2>Today's Plan</h2>
+        <button id="clearPlanBtn" class="link-btn">Clear all</button>
+      </div>
+      <div id="planList" class="plan-list"></div>
+      <div id="planTotals" class="plan-totals"></div>
+    </aside>
+  </div>
+
+  <section class="grocery-section">
+    <div class="grocery-header">
+      <h2>Grocery List</h2>
+      <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
+    </div>
+    <div id="groceryList" class="grocery-list"></div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
