@@ -17,6 +17,14 @@ const CATEGORY_LABELS = {
   'condiments-sauces-spices': 'Condiments & Spices'
 };
 
+const PROTEIN_MIN = 50;
+const PROTEIN_MAX = 300;
+const PROTEIN_STEP = 5;
+
+const BUDGET_MIN = 20;
+const BUDGET_MAX = 250;
+const BUDGET_STEP = 5;
+
 const STORAGE_PLAN = 'proteinApp.plan';
 const STORAGE_SETTINGS = 'proteinApp.settings';
 const STORAGE_GROCERY_CHECKED = 'proteinApp.groceryChecked';
@@ -33,9 +41,16 @@ const state = {
   favorites: new Set(),  // recipeId
   servingsChoice: {},   // recipeId -> pending servings (1-5) before/while in plan
   plan: {},             // recipeId -> servings
-  settings: { targetProtein: 185, consumedProtein: 56 },
+  settings: { targetProtein: 185, budgetMode: 'under', budgetTarget: 75 },
   groceryChecked: {}    // itemKey -> boolean
 };
+
+function snapToStep(value, min, max, step, fallback) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return fallback;
+  const snapped = Math.round((n - min) / step) * step + min;
+  return Math.max(min, Math.min(max, snapped));
+}
 
 function loadPersisted() {
   try {
@@ -45,8 +60,9 @@ function loadPersisted() {
   try {
     const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS));
     if (settings && typeof settings === 'object') {
-      state.settings.targetProtein = Number(settings.targetProtein) || 185;
-      state.settings.consumedProtein = Number(settings.consumedProtein) || 56;
+      state.settings.targetProtein = snapToStep(settings.targetProtein, PROTEIN_MIN, PROTEIN_MAX, PROTEIN_STEP, 185);
+      state.settings.budgetMode = settings.budgetMode === 'around' ? 'around' : 'under';
+      state.settings.budgetTarget = snapToStep(settings.budgetTarget, BUDGET_MIN, BUDGET_MAX, BUDGET_STEP, 75);
     }
   } catch (e) {}
   try {
@@ -122,6 +138,7 @@ function setServingsFor(recipeId, value) {
     persistPlan();
     renderPlanPanel();
     renderGroceryList();
+    renderBudgetSection();
   }
 }
 
@@ -135,6 +152,7 @@ function toggleInPlan(recipeId) {
   renderRecipeGrid();
   renderPlanPanel();
   renderGroceryList();
+  renderBudgetSection();
 }
 
 function removeFromPlan(recipeId) {
@@ -143,6 +161,7 @@ function removeFromPlan(recipeId) {
   renderRecipeGrid();
   renderPlanPanel();
   renderGroceryList();
+  renderBudgetSection();
 }
 
 function clearPlan() {
@@ -151,6 +170,7 @@ function clearPlan() {
   renderRecipeGrid();
   renderPlanPanel();
   renderGroceryList();
+  renderBudgetSection();
 }
 
 function matchesFilters(recipe) {
@@ -290,6 +310,9 @@ function renderRecipeCard(recipe) {
   cardControls.appendChild(servingsControl);
   cardControls.appendChild(addBtn);
 
+  const cardFooter = document.createElement('div');
+  cardFooter.className = 'card-footer';
+
   const details = document.createElement('details');
   const summary = document.createElement('summary');
   summary.textContent = 'Ingredients & instructions';
@@ -320,11 +343,19 @@ function renderRecipeCard(recipe) {
     details.appendChild(note);
   }
 
+  const cardBtn = document.createElement('button');
+  cardBtn.className = 'link-btn recipe-card-btn';
+  cardBtn.textContent = 'View recipe card';
+  cardBtn.addEventListener('click', () => openRecipeCard(recipe.id));
+
+  cardFooter.appendChild(details);
+  cardFooter.appendChild(cardBtn);
+
   card.appendChild(tagRow);
   card.appendChild(titleRow);
   card.appendChild(macroRow);
   card.appendChild(cardControls);
-  card.appendChild(details);
+  card.appendChild(cardFooter);
 
   return card;
 }
@@ -339,9 +370,7 @@ function renderRecipeGrid() {
 }
 
 function computeGoal() {
-  const target = state.settings.targetProtein;
-  const consumed = state.settings.consumedProtein;
-  return Math.max(0, target - consumed);
+  return Math.max(0, state.settings.targetProtein);
 }
 
 function computePlanTotals() {
@@ -358,7 +387,7 @@ function computePlanTotals() {
 function renderGoalReadout() {
   const goal = computeGoal();
   document.getElementById('goalReadout').textContent =
-    `Need ${goal}g protein from meals/snacks today`;
+    `Goal: ${goal}g protein from meals/snacks today`;
 }
 
 function renderPlanPanel() {
@@ -416,7 +445,7 @@ function renderPlanPanel() {
 }
 
 function computeGroceryList() {
-  const map = {}; // key -> { category, item, unit, qty }
+  const map = {}; // key -> { category, item, unit, qty, price }
   Object.entries(state.plan).forEach(([id, servings]) => {
     const recipe = RECIPES.find(r => r.id === id);
     if (!recipe) return;
@@ -426,7 +455,14 @@ function computeGroceryList() {
       if (map[key]) {
         map[key].qty += scaledQty;
       } else {
-        map[key] = { key, category: ing.category, item: ing.item, unit: ing.unit, qty: scaledQty };
+        map[key] = {
+          key,
+          category: ing.category,
+          item: ing.item,
+          unit: ing.unit,
+          qty: scaledQty,
+          price: ing.estPricePerUnit || 0
+        };
       }
     });
   });
@@ -438,6 +474,15 @@ function computeGroceryList() {
   });
   Object.values(grouped).forEach(list => list.sort((a, b) => a.item.localeCompare(b.item)));
   return grouped;
+}
+
+function computeGroceryCost() {
+  const grouped = computeGroceryList();
+  let total = 0;
+  Object.values(grouped).forEach(list => {
+    list.forEach(entry => { total += entry.qty * entry.price; });
+  });
+  return total;
 }
 
 function renderGroceryList() {
@@ -487,6 +532,46 @@ function renderGroceryList() {
   });
 }
 
+function renderBudgetSection() {
+  const total = computeGroceryCost();
+  const budget = state.settings.budgetTarget;
+  const mode = state.settings.budgetMode;
+
+  document.getElementById('budgetEstimate').textContent = `Est. total: $${total.toFixed(2)}`;
+  document.getElementById('budgetValueLabel').textContent = budget;
+
+  const pct = budget > 0 ? Math.min(100, Math.round((total / budget) * 100)) : 0;
+  let statusClass, statusText;
+
+  if (mode === 'under') {
+    if (total <= budget) {
+      statusClass = 'ok';
+      statusText = `$${(budget - total).toFixed(2)} under budget`;
+    } else {
+      statusClass = 'danger';
+      statusText = `$${(total - budget).toFixed(2)} over budget`;
+    }
+  } else {
+    const diff = total - budget;
+    const diffPct = budget > 0 ? Math.abs(diff) / budget : 0;
+    if (diffPct <= 0.15) statusClass = 'ok';
+    else if (diffPct <= 0.30) statusClass = 'warn';
+    else statusClass = 'danger';
+    statusText = Math.abs(diff) < 0.005
+      ? 'Right on budget'
+      : diff > 0
+        ? `$${diff.toFixed(2)} above target`
+        : `$${Math.abs(diff).toFixed(2)} below target`;
+  }
+
+  const fill = document.getElementById('budgetProgressFill');
+  fill.className = 'progress-fill ' + statusClass;
+  fill.style.width = pct + '%';
+  const statusEl = document.getElementById('budgetStatusLine');
+  statusEl.className = 'status-line ' + statusClass;
+  statusEl.textContent = statusText;
+}
+
 function buildGroceryListText() {
   const grouped = computeGroceryList();
   const lines = ['Grocery List'];
@@ -498,6 +583,7 @@ function buildGroceryListText() {
       lines.push(`${box} ${formatIngredientLine(entry.qty, entry.unit, entry.item)}`);
     });
   });
+  lines.push('', `Estimated total: $${computeGroceryCost().toFixed(2)}`);
   return lines.join('\n');
 }
 
@@ -531,23 +617,89 @@ function downloadGroceryList() {
   URL.revokeObjectURL(url);
 }
 
-function wireSettings() {
-  const targetInput = document.getElementById('targetProtein');
-  const consumedInput = document.getElementById('consumedProtein');
-  targetInput.value = state.settings.targetProtein;
-  consumedInput.value = state.settings.consumedProtein;
+function openRecipeCard(recipeId) {
+  const recipe = RECIPES.find(r => r.id === recipeId);
+  if (!recipe) return;
+  const servings = getServingsFor(recipeId);
+  const content = document.getElementById('recipeCardContent');
 
-  targetInput.addEventListener('input', () => {
-    state.settings.targetProtein = Number(targetInput.value) || 0;
+  const ingHtml = recipe.ingredients
+    .map(ing => `<li>${formatIngredientLine(ing.quantity * servings, ing.unit, ing.item)}</li>`)
+    .join('');
+  const stepsHtml = recipe.instructions.map(step => `<li>${step}</li>`).join('');
+
+  content.innerHTML = `
+    <h2>${recipe.name}</h2>
+    <div class="recipe-card-meta">
+      ${servings} serving${servings > 1 ? 's' : ''} ·
+      ${Math.round(recipe.nutrition.proteinG * servings)}g protein ·
+      ${Math.round(recipe.nutrition.calories * servings)} cal ·
+      ${recipe.cookTimeMinutes} min
+    </div>
+    <h3>Ingredients</h3>
+    <ul class="ingredient-list">${ingHtml}</ul>
+    <h3>Instructions</h3>
+    <ol class="instruction-list">${stepsHtml}</ol>
+  `;
+  document.getElementById('recipeCardModal').classList.remove('hidden');
+}
+
+function closeRecipeCard() {
+  document.getElementById('recipeCardModal').classList.add('hidden');
+}
+
+function wireRecipeCardModal() {
+  document.getElementById('closeRecipeCardBtn').addEventListener('click', closeRecipeCard);
+  document.getElementById('recipeCardModal').addEventListener('click', (e) => {
+    if (e.target.id === 'recipeCardModal') closeRecipeCard();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeRecipeCard();
+  });
+  document.getElementById('printRecipeCardBtn').addEventListener('click', () => window.print());
+}
+
+function wireSettings() {
+  const targetSelect = document.getElementById('targetProtein');
+  targetSelect.innerHTML = '';
+  for (let v = PROTEIN_MIN; v <= PROTEIN_MAX; v += PROTEIN_STEP) {
+    const opt = document.createElement('option');
+    opt.value = String(v);
+    opt.textContent = String(v);
+    targetSelect.appendChild(opt);
+  }
+  targetSelect.value = String(state.settings.targetProtein);
+
+  targetSelect.addEventListener('change', () => {
+    state.settings.targetProtein = Number(targetSelect.value);
     persistSettings();
     renderGoalReadout();
     renderPlanPanel();
   });
-  consumedInput.addEventListener('input', () => {
-    state.settings.consumedProtein = Number(consumedInput.value) || 0;
+}
+
+function wireBudget() {
+  const slider = document.getElementById('budgetSlider');
+  slider.min = String(BUDGET_MIN);
+  slider.max = String(BUDGET_MAX);
+  slider.step = String(BUDGET_STEP);
+  slider.value = String(state.settings.budgetTarget);
+
+  slider.addEventListener('input', () => {
+    state.settings.budgetTarget = Number(slider.value);
     persistSettings();
-    renderGoalReadout();
-    renderPlanPanel();
+    renderBudgetSection();
+  });
+
+  document.querySelectorAll('.budget-mode-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === state.settings.budgetMode);
+    btn.addEventListener('click', () => {
+      state.settings.budgetMode = btn.dataset.mode;
+      persistSettings();
+      document.querySelectorAll('.budget-mode-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.mode === state.settings.budgetMode));
+      renderBudgetSection();
+    });
   });
 }
 
@@ -578,17 +730,20 @@ function wireControls() {
 async function init() {
   loadPersisted();
   wireSettings();
+  wireBudget();
   wireControls();
+  wireRecipeCardModal();
   renderChips();
   renderGoalReadout();
 
-  const res = await fetch('data/recipes.json');
+  const res = await fetch('data/recipes.json', { cache: 'no-store' });
   const data = await res.json();
   RECIPES = data.recipes;
 
   renderRecipeGrid();
   renderPlanPanel();
   renderGroceryList();
+  renderBudgetSection();
 }
 
 init();

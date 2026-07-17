@@ -9,7 +9,8 @@
       "dairy-eggs",
       "pantry-dry-goods",
       "condiments-sauces-spices"
-    ]
+    ],
+    "priceDisclaimer": "Ingredient prices are rough estimates based on typical U.S. grocery averages, not live or store-specific pricing."
   },
   "recipes": [
     {
@@ -33,31 +34,36 @@
           "item": "egg whites",
           "quantity": 4,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.2
         },
         {
           "item": "egg",
           "quantity": 1,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "turkey bacon",
           "quantity": 2,
           "unit": "slices",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.35
         },
         {
           "item": "spinach, chopped",
           "quantity": 0.25,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "salt and pepper",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         }
       ],
       "instructions": [
@@ -89,25 +95,29 @@
           "item": "plain nonfat Greek yogurt",
           "quantity": 170,
           "unit": "g",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.006
         },
         {
           "item": "mixed berries",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 2.5
         },
         {
           "item": "chia seeds",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "honey",
           "quantity": 1,
           "unit": "tsp",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.15
         }
       ],
       "instructions": [
@@ -137,31 +147,36 @@
           "item": "eggs",
           "quantity": 2,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "low-fat cottage cheese",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 1.8
         },
         {
           "item": "spinach",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "tomato, diced",
           "quantity": 0.25,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.9
         },
         {
           "item": "cooking spray",
           "quantity": 1,
           "unit": "spray",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.02
         }
       ],
       "instructions": [
@@ -193,31 +208,36 @@
           "item": "rolled oats",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "whey protein powder",
           "quantity": 1,
           "unit": "scoop",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 1.0
         },
         {
           "item": "peanut butter",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "unsweetened almond milk",
           "quantity": 1,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.35
         },
         {
           "item": "banana",
           "quantity": 0.5,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.25
         }
       ],
       "instructions": [
@@ -247,25 +267,29 @@
           "item": "eggs",
           "quantity": 3,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "turkey breakfast sausage, crumbled",
           "quantity": 1,
           "unit": "link",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "bell pepper, diced",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "shredded cheddar cheese",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.22
         }
       ],
       "instructions": [
@@ -296,37 +320,43 @@
           "item": "chicken breast",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "bell pepper and onion mix, sliced",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.8
         },
         {
           "item": "cooked brown rice",
           "quantity": 0.33,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "salsa",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         },
         {
           "item": "lime",
           "quantity": 0.5,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.5
         },
         {
           "item": "fajita seasoning",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         }
       ],
       "instructions": [
@@ -357,31 +387,36 @@
           "item": "canned tuna in water, drained",
           "quantity": 5,
           "unit": "oz can",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.35
         },
         {
           "item": "plain nonfat Greek yogurt",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.09
         },
         {
           "item": "celery, diced",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.05
         },
         {
           "item": "red onion, diced",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.05
         },
         {
           "item": "lettuce leaves",
           "quantity": 4,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         }
       ],
       "instructions": [
@@ -411,31 +446,36 @@
           "item": "ground turkey, 93% lean",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.22
         },
         {
           "item": "black beans, cooked",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.4
         },
         {
           "item": "salsa",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         },
         {
           "item": "cooked brown rice",
           "quantity": 0.33,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "taco seasoning",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         }
       ],
       "instructions": [
@@ -466,31 +506,36 @@
           "item": "shrimp, peeled and deveined",
           "quantity": 6,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.45
         },
         {
           "item": "zucchini, spiralized",
           "quantity": 1,
           "unit": "medium",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.9
         },
         {
           "item": "garlic, minced",
           "quantity": 2,
           "unit": "cloves",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "low-sodium soy sauce",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         }
       ],
       "instructions": [
@@ -521,31 +566,36 @@
           "item": "salmon fillet",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.55
         },
         {
           "item": "asparagus",
           "quantity": 1,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 1.2
         },
         {
           "item": "lemon",
           "quantity": 0.5,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         },
         {
           "item": "salt and pepper",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         }
       ],
       "instructions": [
@@ -575,31 +625,36 @@
           "item": "chicken breast",
           "quantity": 4,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "low-fat cottage cheese",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 1.8
         },
         {
           "item": "cherry tomatoes, halved",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 1.5
         },
         {
           "item": "cucumber, diced",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.4
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         }
       ],
       "instructions": [
@@ -628,25 +683,29 @@
           "item": "chicken thighs, boneless skinless",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.19
         },
         {
           "item": "broccoli florets",
           "quantity": 1.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         },
         {
           "item": "garlic powder",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.08
         }
       ],
       "instructions": [
@@ -675,31 +734,36 @@
           "item": "cod fillet",
           "quantity": 6,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.35
         },
         {
           "item": "zucchini, sliced",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.5
         },
         {
           "item": "bell pepper, sliced",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.8
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         },
         {
           "item": "lemon",
           "quantity": 0.5,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.6
         }
       ],
       "instructions": [
@@ -729,31 +793,36 @@
           "item": "lean beef strips (93% lean)",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.35
         },
         {
           "item": "broccoli florets",
           "quantity": 1.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "garlic, minced",
           "quantity": 1,
           "unit": "clove",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "ginger, minced",
           "quantity": 1,
           "unit": "tsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.1
         },
         {
           "item": "low-sodium soy sauce",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         }
       ],
       "instructions": [
@@ -784,25 +853,29 @@
           "item": "ground turkey, 93% lean",
           "quantity": 4,
           "unit": "oz (per serving)",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.22
         },
         {
           "item": "kidney beans, cooked",
           "quantity": 0.5,
           "unit": "cup (per serving)",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.4
         },
         {
           "item": "diced tomatoes",
           "quantity": 0.5,
           "unit": "cup (per serving)",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.6
         },
         {
           "item": "chili powder",
           "quantity": 1,
           "unit": "tsp (per serving)",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.08
         }
       ],
       "instructions": [
@@ -832,25 +905,29 @@
           "item": "shrimp, peeled and deveined",
           "quantity": 6,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.45
         },
         {
           "item": "bell pepper and onion mix, chunked",
           "quantity": 1,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.8
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         },
         {
           "item": "paprika",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.08
         }
       ],
       "instructions": [
@@ -880,25 +957,29 @@
           "item": "chicken breast",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "sweet potato",
           "quantity": 1,
           "unit": "small",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.8
         },
         {
           "item": "green beans",
           "quantity": 1,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.7
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         }
       ],
       "instructions": [
@@ -928,25 +1009,29 @@
           "item": "salmon fillet",
           "quantity": 5,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.55
         },
         {
           "item": "snap peas",
           "quantity": 1,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 1.2
         },
         {
           "item": "light teriyaki sauce",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "sesame oil",
           "quantity": 0.5,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.15
         }
       ],
       "instructions": [
@@ -977,19 +1062,22 @@
           "item": "eggs",
           "quantity": 2,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "cucumber, sliced",
           "quantity": 0.5,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.8
         },
         {
           "item": "salt",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         }
       ],
       "instructions": [
@@ -1018,13 +1106,15 @@
           "item": "low-fat cottage cheese",
           "quantity": 0.75,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 1.8
         },
         {
           "item": "pineapple chunks",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 1.0
         }
       ],
       "instructions": [
@@ -1052,19 +1142,22 @@
           "item": "deli turkey slices",
           "quantity": 4,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "cheddar cheese slice",
           "quantity": 1,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "mustard",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.05
         }
       ],
       "instructions": [
@@ -1093,25 +1186,29 @@
           "item": "chickpeas, cooked and dried",
           "quantity": 1,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.4
         },
         {
           "item": "olive oil",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.12
         },
         {
           "item": "smoked paprika",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.1
         },
         {
           "item": "salt",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         }
       ],
       "instructions": [
@@ -1140,19 +1237,22 @@
           "item": "plain nonfat Greek yogurt",
           "quantity": 0.75,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 1.25
         },
         {
           "item": "sliced almonds",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.2
         },
         {
           "item": "cinnamon",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.02
         }
       ],
       "instructions": [
@@ -1181,13 +1281,15 @@
           "item": "shelled edamame, frozen",
           "quantity": 1,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.7
         },
         {
           "item": "sea salt",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         }
       ],
       "instructions": [
@@ -1216,31 +1318,36 @@
           "item": "eggs",
           "quantity": 3,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "shredded cheddar cheese",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.22
         },
         {
           "item": "bell pepper, diced",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "onion, diced",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.04
         },
         {
           "item": "salt and pepper",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         }
       ],
       "instructions": [
@@ -1271,37 +1378,43 @@
           "item": "rolled oats",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "vanilla protein powder",
           "quantity": 1,
           "unit": "scoop",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 1.0
         },
         {
           "item": "milk",
           "quantity": 0.75,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "greek yogurt",
           "quantity": 0.25,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 1.25
         },
         {
           "item": "chia seeds",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "honey",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.15
         }
       ],
       "instructions": [
@@ -1333,43 +1446,50 @@
           "item": "ground turkey",
           "quantity": 6,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.22
         },
         {
           "item": "egg",
           "quantity": 1,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "breadcrumbs",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.08
         },
         {
           "item": "grated parmesan",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "garlic, minced",
           "quantity": 1,
           "unit": "clove",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "marinara sauce",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.9
         },
         {
           "item": "zucchini, sliced",
           "quantity": 1,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.5
         }
       ],
       "instructions": [
@@ -1401,31 +1521,36 @@
           "item": "cooked chicken breast, shredded",
           "quantity": 6,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "romaine lettuce leaves",
           "quantity": 6,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "caesar dressing",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.2
         },
         {
           "item": "grated parmesan",
           "quantity": 2,
           "unit": "tbsp",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.3
         },
         {
           "item": "cherry tomatoes, halved",
           "quantity": 0.25,
           "unit": "cup",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 1.5
         }
       ],
       "instructions": [
@@ -1456,43 +1581,50 @@
           "item": "ground turkey",
           "quantity": 7,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.22
         },
         {
           "item": "worcestershire sauce",
           "quantity": 1,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.08
         },
         {
           "item": "garlic powder",
           "quantity": 0.5,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.08
         },
         {
           "item": "onion powder",
           "quantity": 0.5,
           "unit": "tsp",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.08
         },
         {
           "item": "salt and pepper",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.01
         },
         {
           "item": "lettuce leaf",
           "quantity": 1,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "tomato slice",
           "quantity": 2,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.1
         }
       ],
       "instructions": [
@@ -1523,37 +1655,43 @@
           "item": "shrimp, peeled and deveined",
           "quantity": 7,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 0.45
         },
         {
           "item": "butter",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.2
         },
         {
           "item": "garlic, minced",
           "quantity": 3,
           "unit": "clove",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.15
         },
         {
           "item": "lemon juice",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.1
         },
         {
           "item": "red pepper flakes",
           "quantity": 1,
           "unit": "pinch",
-          "category": "condiments-sauces-spices"
+          "category": "condiments-sauces-spices",
+          "estPricePerUnit": 0.02
         },
         {
           "item": "parsley, chopped",
           "quantity": 1,
           "unit": "tbsp",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.1
         }
       ],
       "instructions": [
@@ -1586,25 +1724,29 @@
           "item": "vanilla protein powder",
           "quantity": 1,
           "unit": "scoop",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 1.0
         },
         {
           "item": "banana",
           "quantity": 1,
           "unit": "each",
-          "category": "produce"
+          "category": "produce",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "milk",
           "quantity": 1,
           "unit": "cup",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.25
         },
         {
           "item": "ice cubes",
           "quantity": 0.5,
           "unit": "cup",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.02
         }
       ],
       "instructions": [
@@ -1634,19 +1776,22 @@
           "item": "beef jerky",
           "quantity": 1,
           "unit": "oz",
-          "category": "meat-seafood"
+          "category": "meat-seafood",
+          "estPricePerUnit": 1.0
         },
         {
           "item": "string cheese",
           "quantity": 1,
           "unit": "each",
-          "category": "dairy-eggs"
+          "category": "dairy-eggs",
+          "estPricePerUnit": 0.35
         },
         {
           "item": "almonds",
           "quantity": 10,
           "unit": "each",
-          "category": "pantry-dry-goods"
+          "category": "pantry-dry-goods",
+          "estPricePerUnit": 0.03
         }
       ],
       "instructions": [

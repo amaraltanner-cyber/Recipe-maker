@@ -75,7 +75,8 @@ body {
   gap: 4px;
 }
 
-.settings-row input[type="number"] {
+.settings-row input[type="number"],
+.settings-row select {
   width: 90px;
   padding: 6px 8px;
   border: 1px solid var(--border);
@@ -468,13 +469,56 @@ body {
 .status-line.warn { color: var(--warn); }
 .status-line.danger { color: var(--danger); }
 
-.grocery-section {
-  margin-top: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
+.budget-section {
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.budget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.budget-header h3 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.budget-estimate {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.budget-mode-row {
+  display: flex;
+  gap: 6px;
+}
+
+.budget-mode-btn {
+  flex: 1;
+  text-align: center;
+}
+
+#budgetSlider {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.budget-slider-value {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.grocery-subsection {
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  padding-top: 12px;
 }
 
 .grocery-header {
@@ -483,34 +527,35 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .grocery-header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .copy-feedback {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--accent);
 }
 
-.grocery-header h2 {
-  font-size: 1.05rem;
+.grocery-header h3 {
+  font-size: 0.9rem;
   margin: 0;
 }
 
 .grocery-empty {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .grocery-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .grocery-category h3 {
@@ -549,4 +594,108 @@ body {
 .grocery-item.checked span {
   text-decoration: line-through;
   color: var(--text-muted);
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recipe-card-btn {
+  align-self: flex-start;
+  padding: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px 20px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+
+#recipeCardContent h2 {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+}
+
+#recipeCardContent h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin: 18px 0 6px;
+}
+
+.recipe-card-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+#recipeCardContent .ingredient-list,
+#recipeCardContent .instruction-list {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .modal-card, .modal-card * {
+    visibility: visible;
+  }
+  .modal-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: none;
+    box-shadow: none;
+    border: none;
+  }
+  .modal-close, .modal-actions {
+    display: none;
+  }
 }

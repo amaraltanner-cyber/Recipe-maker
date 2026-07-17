@@ -13,10 +13,7 @@
     <h1>Protein Recipe Finder</h1>
     <div class="settings-row">
       <label>Daily protein target (g)
-        <input id="targetProtein" type="number" min="0" step="1">
-      </label>
-      <label>Already consumed today (g)
-        <input id="consumedProtein" type="number" min="0" step="1">
+        <select id="targetProtein"></select>
       </label>
       <div class="goal-readout" id="goalReadout"></div>
     </div>
@@ -57,27 +54,52 @@
 
     <aside class="plan-panel">
       <div class="plan-panel-header">
-        <h2>Today's Plan</h2>
+        <h2>Shopping List</h2>
         <button id="clearPlanBtn" class="link-btn">Clear all</button>
       </div>
       <div id="planList" class="plan-list"></div>
       <div id="planTotals" class="plan-totals"></div>
+
+      <div class="budget-section">
+        <div class="budget-header">
+          <h3>Budget</h3>
+          <span id="budgetEstimate" class="budget-estimate"></span>
+        </div>
+        <div class="budget-mode-row">
+          <button class="chip budget-mode-btn active" data-mode="under" type="button">Stay under budget</button>
+          <button class="chip budget-mode-btn" data-mode="around" type="button">Around budget</button>
+        </div>
+        <input id="budgetSlider" type="range" min="20" max="250" step="5">
+        <div class="budget-slider-value">Budget: $<span id="budgetValueLabel"></span></div>
+        <div class="progress-track"><div id="budgetProgressFill" class="progress-fill"></div></div>
+        <div id="budgetStatusLine" class="status-line"></div>
+      </div>
+
+      <div class="grocery-subsection">
+        <div class="grocery-header">
+          <h3>Grocery List</h3>
+          <div class="grocery-header-actions">
+            <span id="copyFeedback" class="copy-feedback"></span>
+            <button id="copyGroceryBtn" class="link-btn">Copy</button>
+            <button id="downloadGroceryBtn" class="link-btn">Download</button>
+            <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
+          </div>
+        </div>
+        <div id="groceryList" class="grocery-list"></div>
+      </div>
     </aside>
   </div>
 
-  <section class="grocery-section">
-    <div class="grocery-header">
-      <h2>Grocery List</h2>
-      <div class="grocery-header-actions">
-        <span id="copyFeedback" class="copy-feedback"></span>
-        <button id="copyGroceryBtn" class="link-btn">Copy list</button>
-        <button id="downloadGroceryBtn" class="link-btn">Download .txt</button>
-        <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
-      </div>
-    </div>
-    <div id="groceryList" class="grocery-list"></div>
-  </section>
+</div>
 
+<div id="recipeCardModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <button id="closeRecipeCardBtn" class="modal-close" type="button" aria-label="Close">✕</button>
+    <div id="recipeCardContent"></div>
+    <div class="modal-actions">
+      <button id="printRecipeCardBtn" class="add-btn" type="button">Print</button>
+    </div>
+  </div>
 </div>
 
 <script src="app.js"></script>
