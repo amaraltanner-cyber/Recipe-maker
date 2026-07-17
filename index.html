@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Protein Recipe Finder</title>
+<title>Recipe Finder</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="app">
 
   <header class="app-header">
-    <h1>Protein Recipe Finder</h1>
+    <h1>Recipe Finder</h1>
     <div class="settings-row">
       <label>Daily protein target (g)
         <select id="targetProtein"></select>
@@ -53,43 +53,57 @@
     </main>
 
     <aside class="plan-panel">
-      <div class="plan-panel-header">
-        <h2>Shopping List</h2>
-        <button id="clearPlanBtn" class="link-btn">Clear all</button>
-      </div>
-      <div id="planList" class="plan-list"></div>
-      <div id="planTotals" class="plan-totals"></div>
-
-      <div class="budget-section">
-        <div class="budget-header">
-          <h3>Budget</h3>
-          <span id="budgetEstimate" class="budget-estimate"></span>
-        </div>
-        <div class="budget-mode-row">
-          <button class="chip budget-mode-btn active" data-mode="under" type="button">Stay under budget</button>
-          <button class="chip budget-mode-btn" data-mode="around" type="button">Around budget</button>
-        </div>
-        <input id="budgetSlider" type="range" min="20" max="250" step="5">
-        <div class="budget-slider-value">Budget: $<span id="budgetValueLabel"></span></div>
-        <div class="progress-track"><div id="budgetProgressFill" class="progress-fill"></div></div>
-        <div id="budgetStatusLine" class="status-line"></div>
+      <div class="plan-tab-bar" role="tablist">
+        <button class="plan-tab-btn active" data-tab="shopping" type="button" role="tab">Shopping List</button>
+        <button class="plan-tab-btn" data-tab="budget" type="button" role="tab">Budget</button>
+        <button class="plan-tab-btn" data-tab="grocery" type="button" role="tab">Grocery List</button>
       </div>
 
-      <div class="grocery-subsection">
-        <div class="grocery-header">
-          <h3>Grocery List</h3>
-          <div class="grocery-header-actions">
-            <span id="copyFeedback" class="copy-feedback"></span>
-            <button id="copyGroceryBtn" class="link-btn">Copy</button>
-            <button id="downloadGroceryBtn" class="link-btn">Download</button>
-            <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
+      <div class="plan-tab-scroll" id="planTabScroll">
+        <section class="plan-tab-panel" data-tab="shopping">
+          <div class="plan-panel-header">
+            <h2>Shopping List</h2>
+            <button id="clearPlanBtn" class="link-btn">Clear all</button>
           </div>
-        </div>
-        <div id="groceryList" class="grocery-list"></div>
-      </div>
+          <div id="planList" class="plan-list"></div>
+          <div id="planTotals" class="plan-totals"></div>
+        </section>
 
-      <div class="store-finder-cta">
-        <button id="openStoreFinderBtn" class="add-btn store-finder-btn" type="button">Find Nearby Stores</button>
+        <section class="plan-tab-panel" data-tab="budget">
+          <div class="budget-section">
+            <div class="budget-header">
+              <h3>Budget</h3>
+              <span id="budgetEstimate" class="budget-estimate"></span>
+            </div>
+            <div class="budget-mode-row">
+              <button class="chip budget-mode-btn active" data-mode="under" type="button">Stay under budget</button>
+              <button class="chip budget-mode-btn" data-mode="around" type="button">Around budget</button>
+            </div>
+            <input id="budgetSlider" type="range" min="20" max="250" step="5">
+            <div class="budget-slider-value">Budget: $<span id="budgetValueLabel"></span></div>
+            <div class="progress-track"><div id="budgetProgressFill" class="progress-fill"></div></div>
+            <div id="budgetStatusLine" class="status-line"></div>
+          </div>
+        </section>
+
+        <section class="plan-tab-panel" data-tab="grocery">
+          <div class="grocery-subsection">
+            <div class="grocery-header">
+              <h3>Grocery List</h3>
+              <div class="grocery-header-actions">
+                <span id="copyFeedback" class="copy-feedback"></span>
+                <button id="copyGroceryBtn" class="link-btn">Copy</button>
+                <button id="downloadGroceryBtn" class="link-btn">Download</button>
+                <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
+              </div>
+            </div>
+            <div id="groceryList" class="grocery-list"></div>
+          </div>
+
+          <div class="store-finder-cta">
+            <button id="openStoreFinderBtn" class="add-btn store-finder-btn" type="button">Find Nearby Stores</button>
+          </div>
+        </section>
       </div>
     </aside>
   </div>

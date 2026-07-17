@@ -845,6 +845,33 @@ function wireStoreFinderModal() {
   });
 }
 
+function wirePlanTabs() {
+  const scrollEl = document.getElementById('planTabScroll');
+  const tabButtons = [...document.querySelectorAll('.plan-tab-btn')];
+  const panels = [...document.querySelectorAll('.plan-tab-panel')];
+
+  function setActiveTab(tabName) {
+    tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabName));
+  }
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = panels.find(p => p.dataset.tab === btn.dataset.tab);
+      if (panel) panel.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      setActiveTab(btn.dataset.tab);
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    const mostVisible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (mostVisible) setActiveTab(mostVisible.target.dataset.tab);
+  }, { root: scrollEl, threshold: [0.5, 0.75, 1] });
+
+  panels.forEach(panel => observer.observe(panel));
+}
+
 function wireSettings() {
   const targetSelect = document.getElementById('targetProtein');
   targetSelect.innerHTML = '';
@@ -920,6 +947,7 @@ async function init() {
   wireControls();
   wireRecipeCardModal();
   wireStoreFinderModal();
+  wirePlanTabs();
   renderChips();
   renderGoalReadout();
 

@@ -106,6 +106,84 @@ body {
   .plan-panel {
     position: static;
     order: -1;
+    padding: 0;
+    overflow: visible;
+    max-height: none;
+  }
+}
+
+.plan-tab-bar {
+  display: none;
+}
+
+.plan-tab-scroll {
+  display: block;
+}
+
+.plan-tab-panel {
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .plan-tab-bar {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: var(--radius) var(--radius) 0 0;
+    box-shadow: var(--shadow);
+  }
+
+  .plan-tab-btn {
+    flex: 1;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 12px 6px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+
+  .plan-tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .plan-tab-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .plan-tab-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .plan-tab-panel {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding: 16px;
+    min-width: 0;
+  }
+
+  .plan-tab-panel .budget-section,
+  .plan-tab-panel .grocery-subsection {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
   }
 }
 
