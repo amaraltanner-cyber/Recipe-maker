@@ -445,7 +445,7 @@ function renderPlanPanel() {
 }
 
 function computeGroceryList() {
-  const map = {}; // key -> { category, item, unit, qty, price }
+  const map = {}; // key -> { category, item, unit, qty, packagePrice, packageQty }
   Object.entries(state.plan).forEach(([id, servings]) => {
     const recipe = RECIPES.find(r => r.id === id);
     if (!recipe) return;
@@ -461,7 +461,8 @@ function computeGroceryList() {
           item: ing.item,
           unit: ing.unit,
           qty: scaledQty,
-          price: ing.estPricePerUnit || 0
+          packagePrice: ing.estPackagePrice || 0,
+          packageQty: ing.estPackageQty || 1
         };
       }
     });
@@ -480,7 +481,10 @@ function computeGroceryCost() {
   const grouped = computeGroceryList();
   let total = 0;
   Object.values(grouped).forEach(list => {
-    list.forEach(entry => { total += entry.qty * entry.price; });
+    list.forEach(entry => {
+      const packagesNeeded = Math.ceil(entry.qty / entry.packageQty);
+      total += packagesNeeded * entry.packagePrice;
+    });
   });
   return total;
 }
