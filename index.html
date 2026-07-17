@@ -87,6 +87,10 @@
         </div>
         <div id="groceryList" class="grocery-list"></div>
       </div>
+
+      <div class="store-finder-cta">
+        <button id="openStoreFinderBtn" class="add-btn store-finder-btn" type="button">Find Nearby Stores</button>
+      </div>
     </aside>
   </div>
 
@@ -99,6 +103,25 @@
     <div class="modal-actions">
       <button id="printRecipeCardBtn" class="add-btn" type="button">Print</button>
     </div>
+  </div>
+</div>
+
+<div id="storeFinderModal" class="modal-overlay hidden">
+  <div class="modal-card store-finder-card">
+    <button id="closeStoreFinderBtn" class="modal-close" type="button" aria-label="Close">✕</button>
+    <h2>Find Nearby Stores</h2>
+    <p class="store-finder-intro">Enter your ZIP code to find nearby grocery stores, with your shopping list ready to take along.</p>
+
+    <div class="store-finder-search">
+      <input id="zipInput" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="ZIP code" autocomplete="postal-code">
+      <button id="findStoresBtn" class="add-btn" type="button">Search</button>
+    </div>
+    <div id="storeFinderStatus" class="status-line store-finder-status"></div>
+    <div id="storeResultsList" class="store-results-list"></div>
+
+    <div class="store-finder-divider"></div>
+    <h3 class="store-finder-list-heading">Your Shopping List</h3>
+    <div id="storeFinderGroceryList" class="grocery-list"></div>
   </div>
 </div>
 

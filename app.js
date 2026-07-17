@@ -489,8 +489,9 @@ function computeGroceryCost() {
   return total;
 }
 
-function renderGroceryList() {
-  const container = document.getElementById('groceryList');
+function renderGroceryListInto(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
   container.innerHTML = '';
   const grouped = computeGroceryList();
   const hasItems = Object.keys(grouped).length > 0;
@@ -522,7 +523,7 @@ function renderGroceryList() {
       checkbox.addEventListener('change', () => {
         state.groceryChecked[entry.key] = checkbox.checked;
         persistGroceryChecked();
-        label.classList.toggle('checked', checkbox.checked);
+        renderGroceryList();
       });
       const span = document.createElement('span');
       span.textContent = formatIngredientLine(entry.qty, entry.unit, entry.item);
@@ -534,6 +535,13 @@ function renderGroceryList() {
     section.appendChild(ul);
     container.appendChild(section);
   });
+}
+
+function renderGroceryList() {
+  renderGroceryListInto('groceryList');
+  if (!document.getElementById('storeFinderModal').classList.contains('hidden')) {
+    renderGroceryListInto('storeFinderGroceryList');
+  }
 }
 
 function renderBudgetSection() {
@@ -663,6 +671,180 @@ function wireRecipeCardModal() {
   document.getElementById('printRecipeCardBtn').addEventListener('click', () => window.print());
 }
 
+const OVERPASS_ENDPOINTS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter'
+];
+const STORE_SEARCH_RADII_METERS = [8046, 16093, 24140]; // 5mi, 10mi, 15mi
+const MAX_STORE_RESULTS = 8;
+
+function haversineMiles(lat1, lon1, lat2, lon2) {
+  const R = 3958.8;
+  const toRad = deg => deg * Math.PI / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+async function geocodeZip(zip) {
+  const url = `https://nominatim.openstreetmap.org/search?postalcode=${encodeURIComponent(zip)}&country=us&format=json&limit=1`;
+  const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+  if (!res.ok) throw new Error('geocode-failed');
+  const results = await res.json();
+  if (!results.length) throw new Error('zip-not-found');
+  return { lat: Number(results[0].lat), lon: Number(results[0].lon) };
+}
+
+async function queryOverpass(query) {
+  let lastError;
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'data=' + encodeURIComponent(query)
+      });
+      if (!res.ok) throw new Error('overpass-failed');
+      return await res.json();
+    } catch (e) {
+      lastError = e;
+    }
+  }
+  throw lastError || new Error('overpass-failed');
+}
+
+async function findNearbyStores(lat, lon) {
+  for (const radius of STORE_SEARCH_RADII_METERS) {
+    const query = `[out:json][timeout:25];(node["shop"~"^(supermarket|grocery)$"](around:${radius},${lat},${lon});way["shop"~"^(supermarket|grocery)$"](around:${radius},${lat},${lon}););out center 30;`;
+    const data = await queryOverpass(query);
+    const stores = (data.elements || [])
+      .map(el => {
+        const center = el.type === 'node' ? { lat: el.lat, lon: el.lon } : el.center;
+        if (!center) return null;
+        const tags = el.tags || {};
+        return {
+          name: tags.name || tags.brand || 'Grocery Store',
+          address: formatStoreAddress(tags),
+          lat: center.lat,
+          lon: center.lon,
+          distanceMiles: haversineMiles(lat, lon, center.lat, center.lon)
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.distanceMiles - b.distanceMiles);
+
+    if (stores.length >= 3 || radius === STORE_SEARCH_RADII_METERS[STORE_SEARCH_RADII_METERS.length - 1]) {
+      return stores.slice(0, MAX_STORE_RESULTS);
+    }
+  }
+  return [];
+}
+
+function formatStoreAddress(tags) {
+  const streetPart = [tags['addr:housenumber'], tags['addr:street']].filter(Boolean).join(' ');
+  const cityPart = [tags['addr:city'], tags['addr:state']].filter(Boolean).join(', ');
+  const parts = [streetPart, cityPart, tags['addr:postcode']].filter(Boolean);
+  return parts.length ? parts.join(', ') : 'Address unavailable';
+}
+
+function renderStoreResults(stores) {
+  const container = document.getElementById('storeResultsList');
+  container.innerHTML = '';
+  stores.forEach(store => {
+    const card = document.createElement('div');
+    card.className = 'store-result-card';
+
+    const info = document.createElement('div');
+    info.className = 'store-result-info';
+    const name = document.createElement('div');
+    name.className = 'store-result-name';
+    name.textContent = store.name;
+    const address = document.createElement('div');
+    address.className = 'store-result-address';
+    address.textContent = store.address;
+    info.appendChild(name);
+    info.appendChild(address);
+
+    const distance = document.createElement('div');
+    distance.className = 'store-result-distance';
+    distance.textContent = `${store.distanceMiles.toFixed(1)} mi`;
+
+    const directions = document.createElement('a');
+    directions.className = 'store-result-directions';
+    directions.href = `https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lon}`;
+    directions.target = '_blank';
+    directions.rel = 'noopener';
+    directions.textContent = 'Directions';
+
+    card.appendChild(info);
+    card.appendChild(distance);
+    card.appendChild(directions);
+    container.appendChild(card);
+  });
+}
+
+function setStoreFinderStatus(text, statusClass) {
+  const el = document.getElementById('storeFinderStatus');
+  el.textContent = text;
+  el.className = 'status-line store-finder-status' + (statusClass ? ` ${statusClass}` : '');
+}
+
+async function searchStoresNearZip() {
+  const zipInput = document.getElementById('zipInput');
+  const zip = zipInput.value.trim();
+
+  if (!/^\d{5}$/.test(zip)) {
+    setStoreFinderStatus('Enter a valid 5-digit ZIP code.', 'danger');
+    return;
+  }
+
+  document.getElementById('storeResultsList').innerHTML = '';
+  setStoreFinderStatus('Searching for nearby stores…');
+
+  try {
+    const { lat, lon } = await geocodeZip(zip);
+    const stores = await findNearbyStores(lat, lon);
+    if (!stores.length) {
+      setStoreFinderStatus('No grocery stores found near that ZIP code. Try a nearby ZIP.', 'warn');
+      return;
+    }
+    setStoreFinderStatus(`Found ${stores.length} store${stores.length > 1 ? 's' : ''} near ${zip}.`, 'ok');
+    renderStoreResults(stores);
+  } catch (e) {
+    if (e.message === 'zip-not-found') {
+      setStoreFinderStatus("Couldn't find that ZIP code. Double-check and try again.", 'danger');
+    } else {
+      setStoreFinderStatus('Something went wrong looking up stores. Try again in a moment.', 'danger');
+    }
+  }
+}
+
+function openStoreFinder() {
+  document.getElementById('storeFinderModal').classList.remove('hidden');
+  renderGroceryListInto('storeFinderGroceryList');
+}
+
+function closeStoreFinder() {
+  document.getElementById('storeFinderModal').classList.add('hidden');
+}
+
+function wireStoreFinderModal() {
+  document.getElementById('openStoreFinderBtn').addEventListener('click', openStoreFinder);
+  document.getElementById('closeStoreFinderBtn').addEventListener('click', closeStoreFinder);
+  document.getElementById('storeFinderModal').addEventListener('click', (e) => {
+    if (e.target.id === 'storeFinderModal') closeStoreFinder();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeStoreFinder();
+  });
+  document.getElementById('findStoresBtn').addEventListener('click', searchStoresNearZip);
+  document.getElementById('zipInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') searchStoresNearZip();
+  });
+}
+
 function wireSettings() {
   const targetSelect = document.getElementById('targetProtein');
   targetSelect.innerHTML = '';
@@ -737,6 +919,7 @@ async function init() {
   wireBudget();
   wireControls();
   wireRecipeCardModal();
+  wireStoreFinderModal();
   renderChips();
   renderGoalReadout();
 
