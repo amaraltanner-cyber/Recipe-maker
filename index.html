@@ -25,7 +25,10 @@
   <div class="layout">
     <main class="browse">
       <div class="controls">
-        <input id="searchInput" type="search" placeholder="Search recipes or ingredients…" autocomplete="off">
+        <div class="search-row">
+          <input id="searchInput" type="search" placeholder="Search recipes or ingredients…" autocomplete="off">
+          <button id="favoritesOnlyBtn" class="chip favorites-toggle" type="button">★ Favorites only</button>
+        </div>
 
         <div class="chip-group">
           <span class="chip-group-label">Meal</span>
@@ -65,7 +68,12 @@
   <section class="grocery-section">
     <div class="grocery-header">
       <h2>Grocery List</h2>
-      <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
+      <div class="grocery-header-actions">
+        <span id="copyFeedback" class="copy-feedback"></span>
+        <button id="copyGroceryBtn" class="link-btn">Copy list</button>
+        <button id="downloadGroceryBtn" class="link-btn">Download .txt</button>
+        <button id="uncheckAllBtn" class="link-btn">Uncheck all</button>
+      </div>
     </div>
     <div id="groceryList" class="grocery-list"></div>
   </section>

@@ -120,7 +120,14 @@ body {
   gap: 12px;
 }
 
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 #searchInput {
+  flex: 1;
   width: 100%;
   padding: 9px 12px;
   border: 1px solid var(--border);
@@ -128,6 +135,10 @@ body {
   background: var(--bg);
   color: var(--text);
   font-size: 0.95rem;
+}
+
+.favorites-toggle {
+  white-space: nowrap;
 }
 
 .chip-group {
@@ -217,6 +228,31 @@ body {
 .recipe-card h3 {
   margin: 0;
   font-size: 1rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title-row h3 {
+  flex: 1;
+}
+
+.favorite-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 0 2px;
+  color: var(--text-muted);
+}
+
+.favorite-btn.active {
+  color: var(--warn);
 }
 
 .tag-row {
@@ -445,7 +481,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 12px;
+}
+
+.grocery-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.copy-feedback {
+  font-size: 0.78rem;
+  color: var(--accent);
 }
 
 .grocery-header h2 {

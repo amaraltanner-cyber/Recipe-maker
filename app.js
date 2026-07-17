@@ -20,6 +20,7 @@ const CATEGORY_LABELS = {
 const STORAGE_PLAN = 'proteinApp.plan';
 const STORAGE_SETTINGS = 'proteinApp.settings';
 const STORAGE_GROCERY_CHECKED = 'proteinApp.groceryChecked';
+const STORAGE_FAVORITES = 'proteinApp.favorites';
 
 let RECIPES = [];
 
@@ -28,6 +29,8 @@ const state = {
   mealType: 'all',
   devices: new Set(),
   sort: 'protein-desc',
+  favoritesOnly: false,
+  favorites: new Set(),  // recipeId
   servingsChoice: {},   // recipeId -> pending servings (1-5) before/while in plan
   plan: {},             // recipeId -> servings
   settings: { targetProtein: 185, consumedProtein: 56 },
@@ -50,6 +53,10 @@ function loadPersisted() {
     const checked = JSON.parse(localStorage.getItem(STORAGE_GROCERY_CHECKED));
     if (checked && typeof checked === 'object') state.groceryChecked = checked;
   } catch (e) {}
+  try {
+    const favorites = JSON.parse(localStorage.getItem(STORAGE_FAVORITES));
+    if (Array.isArray(favorites)) state.favorites = new Set(favorites);
+  } catch (e) {}
   state.servingsChoice = { ...state.plan };
 }
 
@@ -63,6 +70,17 @@ function persistSettings() {
 
 function persistGroceryChecked() {
   localStorage.setItem(STORAGE_GROCERY_CHECKED, JSON.stringify(state.groceryChecked));
+}
+
+function persistFavorites() {
+  localStorage.setItem(STORAGE_FAVORITES, JSON.stringify([...state.favorites]));
+}
+
+function toggleFavorite(recipeId) {
+  if (state.favorites.has(recipeId)) state.favorites.delete(recipeId);
+  else state.favorites.add(recipeId);
+  persistFavorites();
+  renderRecipeGrid();
 }
 
 function formatIngredientLine(qty, unit, item) {
@@ -136,6 +154,7 @@ function clearPlan() {
 }
 
 function matchesFilters(recipe) {
+  if (state.favoritesOnly && !state.favorites.has(recipe.id)) return false;
   if (state.mealType !== 'all' && !recipe.mealType.includes(state.mealType)) return false;
   if (state.devices.size > 0) {
     const overlaps = recipe.device.some(d => state.devices.has(d));
@@ -206,6 +225,8 @@ function renderRecipeCard(recipe) {
   const scaledProtein = Math.round(recipe.nutrition.proteinG * servings);
   const scaledCalories = Math.round(recipe.nutrition.calories * servings);
 
+  const isFavorite = state.favorites.has(recipe.id);
+
   const card = document.createElement('div');
   card.className = 'recipe-card' + (inPlan ? ' in-plan' : '');
 
@@ -218,8 +239,20 @@ function renderRecipeCard(recipe) {
     tagRow.appendChild(tag);
   });
 
+  const titleRow = document.createElement('div');
+  titleRow.className = 'title-row';
+
   const title = document.createElement('h3');
   title.textContent = recipe.name;
+
+  const favBtn = document.createElement('button');
+  favBtn.className = 'favorite-btn' + (isFavorite ? ' active' : '');
+  favBtn.setAttribute('aria-label', isFavorite ? 'Remove from favorites' : 'Add to favorites');
+  favBtn.textContent = isFavorite ? '★' : '☆';
+  favBtn.addEventListener('click', () => toggleFavorite(recipe.id));
+
+  titleRow.appendChild(title);
+  titleRow.appendChild(favBtn);
 
   const macroRow = document.createElement('div');
   macroRow.className = 'macro-row';
@@ -288,7 +321,7 @@ function renderRecipeCard(recipe) {
   }
 
   card.appendChild(tagRow);
-  card.appendChild(title);
+  card.appendChild(titleRow);
   card.appendChild(macroRow);
   card.appendChild(cardControls);
   card.appendChild(details);
@@ -454,6 +487,50 @@ function renderGroceryList() {
   });
 }
 
+function buildGroceryListText() {
+  const grouped = computeGroceryList();
+  const lines = ['Grocery List'];
+  CATEGORY_ORDER.filter(cat => grouped[cat]).forEach(cat => {
+    lines.push('', CATEGORY_LABELS[cat] || cat);
+    grouped[cat].forEach(entry => {
+      const checked = !!state.groceryChecked[entry.key];
+      const box = checked ? '[x]' : '[ ]';
+      lines.push(`${box} ${formatIngredientLine(entry.qty, entry.unit, entry.item)}`);
+    });
+  });
+  return lines.join('\n');
+}
+
+function showCopyFeedback(message) {
+  const el = document.getElementById('copyFeedback');
+  el.textContent = message;
+  clearTimeout(showCopyFeedback._timer);
+  showCopyFeedback._timer = setTimeout(() => { el.textContent = ''; }, 2000);
+}
+
+async function copyGroceryList() {
+  const text = buildGroceryListText();
+  try {
+    await navigator.clipboard.writeText(text);
+    showCopyFeedback('Copied!');
+  } catch (e) {
+    showCopyFeedback('Could not copy');
+  }
+}
+
+function downloadGroceryList() {
+  const text = buildGroceryListText();
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'grocery-list.txt';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
 function wireSettings() {
   const targetInput = document.getElementById('targetProtein');
   const consumedInput = document.getElementById('consumedProtein');
@@ -484,11 +561,18 @@ function wireControls() {
     renderRecipeGrid();
   });
   document.getElementById('clearPlanBtn').addEventListener('click', clearPlan);
+  document.getElementById('favoritesOnlyBtn').addEventListener('click', () => {
+    state.favoritesOnly = !state.favoritesOnly;
+    document.getElementById('favoritesOnlyBtn').classList.toggle('active', state.favoritesOnly);
+    renderRecipeGrid();
+  });
   document.getElementById('uncheckAllBtn').addEventListener('click', () => {
     state.groceryChecked = {};
     persistGroceryChecked();
     renderGroceryList();
   });
+  document.getElementById('copyGroceryBtn').addEventListener('click', copyGroceryList);
+  document.getElementById('downloadGroceryBtn').addEventListener('click', downloadGroceryList);
 }
 
 async function init() {
