@@ -526,7 +526,7 @@ function renderGroceryListInto(containerId) {
         renderGroceryList();
       });
       const span = document.createElement('span');
-      span.textContent = formatIngredientLine(entry.qty, entry.unit, entry.item);
+      span.textContent = entry.item;
       label.appendChild(checkbox);
       label.appendChild(span);
       li.appendChild(label);
@@ -592,7 +592,7 @@ function buildGroceryListText() {
     grouped[cat].forEach(entry => {
       const checked = !!state.groceryChecked[entry.key];
       const box = checked ? '[x]' : '[ ]';
-      lines.push(`${box} ${formatIngredientLine(entry.qty, entry.unit, entry.item)}`);
+      lines.push(`${box} ${entry.item}`);
     });
   });
   lines.push('', `Estimated total: $${computeGroceryCost().toFixed(2)}`);
